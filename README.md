@@ -116,3 +116,25 @@ Click on the script in the list to bring up the configuration.
 | `Open Readme` | Opens this document |  
 | `Check for Updates` | Updates this script. |  
 | `Save Settings` | Save the settings. |  
+
+
+
+## SCRIPT UPDATER
+
+> **NOTE:** You must launch from within Streamlabs Chatbot. 
+
+The application will open, and if there is an update it will tell you. You click on the `Download & Update` button. 
+
+> **NOTE:** Applying the update will close down Streamlabs Chatbot. It will reopen after the update is complete.
+
+[![](https://i.imgur.com/hfNMfvJl.png)](https://i.imgur.com/hfNMfvJ.png)
+
+## OVERLAY SETUP IN OBS / SLOBS 
+
+- Add a new `Browser Source` in OBS / SLOBS  
+[![](https://i.imgur.com/TAMQkeql.png)](https://i.imgur.com/TAMQkeq.png)
+- Set as a `Local File` and choose the `overlay.html` in the `ChannelPointsAlertOverlay` script directory. You can easily get to the script directory location from right clicking on `Channel Points Alert Overlay` in Chatbot and choose `Open Script Folder`.
+- Set the `width` and `height` to the resolution of your `Base (Canvas) Resolution`. 
+- Add any additional custom CSS that you would like to add.
+- Check both `Shutdown source when not visible` and `Refresh browser when scene becomes active`.  
+[![](https://i.imgur.com/nouqPh0l.png)](https://i.imgur.com/nouqPh0.png)
