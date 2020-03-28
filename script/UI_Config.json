@@ -1,0 +1,431 @@
+{
+	"output_file": "settings.json",
+	"PointsName": {
+		"type": "textbox",
+		"label": "Channel Points Name",
+		"value": "Points",
+		"tooltip": "The name of your channel points.",
+		"group": "DEFAULT"
+	},
+	"IgnoreFulfillment": {
+		"type": "checkbox",
+		"value": true,
+		"label": "Ignore Fulfillment",
+		"tooltip": "Only show if unfulfilled",
+		"group": "DEFAULT"
+	},
+	"MinimumCost": {
+		"type": "slider",
+		"label": "Minimum Reward Cost",
+		"value": 0,
+		"min": 0,
+		"max": 1000000,
+		"ticks": 10,
+		"tooltip": "The minimum cost of a reward to alert",
+		"group": "DEFAULT"
+	},
+	"Duration": {
+		"type": "slider",
+		"label": "Duration (seconds)",
+		"value": 5,
+		"min": 5,
+		"max": 120,
+		"ticks": 1,
+		"tooltip": "The number of seconds to show the alert",
+		"group": "DEFAULT"
+	},
+	"OpenOverlayInBrowser": {
+		"type": "button",
+		"label": "OPEN OVERLAY IN BROWSER",
+		"tooltip": "Opens the overlay in browser for testing",
+		"function": "OpenOverlayInBrowser",
+		"wsevent": "EVENT_NONE",
+		"group": "DEFAULT"
+	},
+	"SendTestAlert": {
+		"type": "button",
+		"label": "SEND TEST ALERT",
+		"tooltip": "Sends a test notification to the overlay",
+		"function": "SendTestAlert",
+		"wsevent": "EVENT_NONE",
+		"group": "DEFAULT"
+	},
+
+	"TwitchOAuth": {
+		"type": "textbox",
+		"label": "Twitch OAuth",
+		"value": "",
+		"tooltip": "The Bot OAuth token to authenticate to subscribe for events",
+		"group": "AUTHENTICATION"
+	},
+	"OpenOAuthRequestInBrowser": {
+		"type": "button",
+		"label": "GET OAUTH TOKEN",
+		"tooltip": "Open page to get OAuth Token.",
+		"function": "OpenOAuthRequestInBrowser",
+		"wsevent": "EVENT_NONE",
+		"group": "AUTHENTICATION"
+	},
+	"InTransition": {
+		"type": "dropdown",
+		"value": "slideInRight",
+		"items": [
+			"bounceIn",
+			"bounceInDown",
+			"bounceInLeft",
+			"bounceInRight",
+			"bounceInUp",
+			"fadeIn",
+			"fadeInDown",
+			"fadeInDownBig",
+			"fadeInLeft",
+			"fadeInLeftBig",
+			"fadeInRight",
+			"fadeInRightBig",
+			"fadeInUp",
+			"fadeInUpBig",
+			"flip",
+			"flipInX",
+			"flipInY",
+			"jackInTheBox",
+			"lightSpeedIn",
+			"rollIn",
+			"rotateIn",
+			"rotateInDownLeft",
+			"rotateInDownRight",
+			"rotateInUpLeft",
+			"rotateInUpRight",
+			"slideInUp",
+			"slideInDown",
+			"slideInLeft",
+			"slideInRight",
+			"zoomIn",
+			"zoomInDown",
+			"zoomInLeft",
+			"zoomInRight",
+			"zoomInUp"
+		],
+		"label": "In Transition",
+		"tooltip": "Set how the alert transitions in",
+		"group": "TRANSITIONS"
+	},
+	"InAttentionAnimation": {
+		"type": "dropdown",
+		"value": "pulse",
+		"items": [
+			"none",
+			"bounce",
+			"flash",
+			"jello",
+			"heartBeat",
+			"pulse",
+			"rubberBand",
+			"shake",
+			"tada",
+			"wobble"
+		],
+		"label": "In Attention Animation",
+		"tooltip": "Animation after it shows",
+		"group": "TRANSITIONS"
+	},
+	"OutTransition": {
+		"type": "dropdown",
+		"value": "slideOutRight",
+		"items": [
+			"none",
+			"bounceOut",
+			"bounceOutDown",
+			"bounceOutLeft",
+			"bounceOutRight",
+			"bounceOutUp",
+			"fadeOut",
+			"fadeOutDown",
+			"fadeOutDownBig",
+			"fadeOutLeft",
+			"fadeOutLeftBig",
+			"fadeOutRight",
+			"fadeOutRightBig",
+			"fadeOutUp",
+			"fadeOutUpBig",
+			"flip",
+			"flipOutX",
+			"flipOutY",
+			"hinge",
+			"lightSpeedOut",
+			"rollOut",
+			"rotateOut",
+			"rotateOutDownLeft",
+			"rotateOutDownRight",
+			"rotateOutUpLeft",
+			"rotateOutUpRight",
+			"slideOutUp",
+			"slideOutDown",
+			"slideOutLeft",
+			"slideOutRight",
+			"zoomOut",
+			"zoomOutDown",
+			"zoomOutLeft",
+			"zoomOutRight",
+			"zoomOutUp"
+		],
+		"label": "Out Transition",
+		"tooltip": "Set how the alert transitions out",
+		"group": "TRANSITIONS"
+	},
+	"OutAttentionAnimation": {
+		"type": "dropdown",
+		"value": "pulse",
+		"items": [
+			"none",
+			"bounce",
+			"flash",
+			"jello",
+			"heartBeat",
+			"pulse",
+			"rubberBand",
+			"shake",
+			"tada",
+			"wobble"
+		],
+		"label": "Out Attention Animation",
+		"tooltip": "Animation after it shows",
+		"group": "TRANSITIONS"
+	},
+	"BorderRadius": {
+		"type": "slider",
+		"label": "Border Radius",
+		"value": 0,
+		"min": 0,
+		"max": 100,
+		"ticks": 1,
+		"tooltip": "The border radius of the alert box",
+		"group": "STYLE"
+	},
+	"Opacity": {
+		"type": "slider",
+		"label": "Opacity",
+		"value": 0,
+		"min": 0,
+		"max": 100,
+		"ticks": 1,
+		"tooltip": "The opacity of the overlay",
+		"group": "STYLE"
+	},
+	"UseRewardBackgroundColor": {
+		"type": "checkbox",
+		"value": true,
+		"label": "Use Reward Background Color",
+		"tooltip": "Use the background color sent by the reward",
+		"group": "STYLE"
+	},
+	"AlertBackgroundColor": {
+		"type": "colorpicker",
+		"label": "Alert Background Color",
+		"value": "rgba(0,0,0,0)",
+		"tooltip": "The background color if Use Reward BackgroundColor is False",
+		"group": "STYLE"
+	},
+	"FontName": {
+		"type": "dropdown",
+		"value": "days-one",
+		"items": [
+			"custom",
+			"amaranth",
+			"allan",
+			"bangers",
+			"bowlby-one",
+			"changa-one",
+			"days-one",
+			"droid-sans",
+			"fugaz-one"
+		],
+		"label": "Font Name",
+		"tooltip": "Animation after it shows",
+		"group": "STYLE"
+	},
+	"CustomFontName": {
+		"type": "textbox",
+		"label": "Custom Font Name",
+		"value": "",
+		"tooltip": "A custom font from Adobe Edge Fonts",
+		"group": "STYLE"
+	},
+	"TitleFontSize": {
+		"type": "slider",
+		"label": "Title Font Size (em)",
+		"value": 1,
+		"min": 1,
+		"max": 3,
+		"ticks": 0.1,
+		"tooltip": "The title font size",
+		"group": "TEXT STYLE"
+	},
+	"TitleColor": {
+		"type": "colorpicker",
+		"label": "Title Color",
+		"value": "rgba(255,0,0,1)",
+		"tooltip": "The color of the Title Text",
+		"group": "TEXT STYLE"
+	},
+	"TitleStrokeColor": {
+		"type": "colorpicker",
+		"label": "Title Stroke Color",
+		"value": "rgba(255,0,0,0)",
+		"tooltip": "The color of the Title Text Stroke",
+		"group": "TEXT STYLE"
+	},
+	"TitleStrokeWidth": {
+		"type": "slider",
+		"label": "Title Stroke Width (px)",
+		"value": 0,
+		"min": 0,
+		"max": 15,
+		"ticks": 1,
+		"tooltip": "The title stroke width",
+		"group": "TEXT STYLE"
+	},
+	"NameFontSize": {
+		"type": "slider",
+		"label": "Name Font Size (em)",
+		"value": 1,
+		"min": 1,
+		"max": 3,
+		"ticks": 0.1,
+		"tooltip": "The user name font size",
+		"group": "TEXT STYLE"
+	},
+	"NameColor": {
+		"type": "colorpicker",
+		"label": "Name Color",
+		"value": "rgba(255,0,0,1)",
+		"tooltip": "The color of the Name Text",
+		"group": "TEXT STYLE"
+	},
+	"NameStrokeColor": {
+		"type": "colorpicker",
+		"label": "Name Stroke Color",
+		"value": "rgba(255,0,0,0)",
+		"tooltip": "The color of the Name Text Stroke",
+		"group": "TEXT STYLE"
+	},
+	"NameStrokeWidth": {
+		"type": "slider",
+		"label": "Name Stroke Width (px)",
+		"value": 0,
+		"min": 0,
+		"max": 15,
+		"ticks": 1,
+		"tooltip": "The Name stroke width",
+		"group": "TEXT STYLE"
+	},
+	"ShowPrompt": {
+		"type": "checkbox",
+		"value": true,
+		"label": "Show Prompt Message",
+		"tooltip": "If checked, the prompt message will display",
+		"group": "TEXT STYLE"
+	},
+	"PromptFontSize": {
+		"type": "slider",
+		"label": "Prompt Message Font Size (em)",
+		"value": 1,
+		"min": 1,
+		"max": 3,
+		"ticks": 0.1,
+		"tooltip": "The prompt message font size",
+		"group": "TEXT STYLE"
+	},
+	"PromptColor": {
+		"type": "colorpicker",
+		"label": "Prompt Color",
+		"value": "rgba(255,0,0,1)",
+		"tooltip": "The color of the Prompt Text",
+		"group": "TEXT STYLE"
+	},
+	"PromptStrokeColor": {
+		"type": "colorpicker",
+		"label": "Prompt Stroke Color",
+		"value": "rgba(255,0,0,0)",
+		"tooltip": "The color of the Prompt Text Stroke",
+		"group": "TEXT STYLE"
+	},
+	"PromptStrokeWidth": {
+		"type": "slider",
+		"label": "Prompt Stroke Width (px)",
+		"value": 0,
+		"min": 0,
+		"max": 15,
+		"ticks": 1,
+		"tooltip": "The Prompt stroke width",
+		"group": "TEXT STYLE"
+	},
+	"ShowMessage": {
+		"type": "checkbox",
+		"value": true,
+		"label": "Show Prompt Response Message",
+		"tooltip": "If checked, the prompt response message will display",
+		"group": "TEXT STYLE"
+	},
+	"MessageFontSize": {
+		"type": "slider",
+		"label": "Message Font Size (em)",
+		"value": 1,
+		"min": 1,
+		"max": 3,
+		"ticks": 0.1,
+		"tooltip": "The prompt response message font size",
+		"group": "TEXT STYLE"
+	},
+	"MessageColor": {
+		"type": "colorpicker",
+		"label": "Message Color",
+		"value": "rgba(255,0,0,1)",
+		"tooltip": "The color of the Message Text",
+		"group": "TEXT STYLE"
+	},
+	"MessageStrokeColor": {
+		"type": "colorpicker",
+		"label": "Message Stroke Color",
+		"value": "rgba(255,0,0,0)",
+		"tooltip": "The color of the Message Text Stroke",
+		"group": "TEXT STYLE"
+	},
+	"MessageStrokeWidth": {
+		"type": "slider",
+		"label": "Message Stroke Width (px)",
+		"value": 0,
+		"min": 0,
+		"max": 15,
+		"ticks": 1,
+		"tooltip": "The Message stroke width",
+		"group": "TEXT STYLE"
+	},
+	"OpenDonateLink": {
+		"type": "button",
+		"label": "Donate",
+		"tooltip": "Donate to support development",
+		"function": "OpenDonateLink",
+		"wsevent": "EVENT_NONE"
+	},
+	"OpenFollowOnTwitchLink": {
+		"type": "button",
+		"label": "Follow Me On Twitch",
+		"tooltip": "Get Medal",
+		"function": "OpenFollowOnTwitchLink",
+		"wsevent": "EVENT_NONE"
+	},
+	"OpenReadMeLink": {
+		"type": "button",
+		"label": "Open ReadMe",
+		"tooltip": "Open ReadMe file",
+		"function": "OpenReadMeLink",
+		"wsevent": "EVENT_NONE"
+	},
+	"OpenScriptUpdater": {
+		"type": "button",
+		"label": "Check For Updates",
+		"tooltip": "Check for updates",
+		"function": "OpenScriptUpdater",
+		"wsevent": "EVENT_NONE"
+	}
+}

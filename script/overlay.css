@@ -1,0 +1,188 @@
+:root {
+	--bg-color: rgba(0, 0, 0, 0);
+	--font-name: 'days-one';
+	
+	--border-radius: 0;
+	--body-opacity: 1;
+	
+	--title-color: rgba(230,126,34,1);
+	--title-font-size: 1em;
+	--title-stroke-width: 1px;
+	--title-stroke-color: #000;
+	--name-color: rgba(255, 0, 0, 1);
+	--name-font-size: 1em;
+	--name-stroke-width: 1px;
+	--name-stroke-color: #000;
+	--prompt-color: rgba(255, 0, 0, 1);
+	--prompt-font-size: 1em;
+	--prompt-stroke-width: 1px;
+	--prompt-stroke-color: #000;
+	--prompt-display: block;
+	--message-color: rgba(255, 0, 0, 1);
+	--message-font-size: 1em;
+	--message-display: block;
+	--message-stroke-width: 1px;
+	--message-stroke-color: #000;
+}
+
+
+body, html {
+	padding: 0;
+	margin: 0;
+
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	border: none;
+	font-size: 76px/1;
+	font-weight: bold;
+	font-family: var(--font-name, 'days-one'), Arial, Helvetica, sans-serif;
+	text-align: center;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	letter-spacing: 3px;
+
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+#config-messages {
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	background-color: red;
+	color: white;
+	font-size: 4vh;
+	font-weight: bold;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 10px;
+}
+#config-messages header {
+	text-align: center;
+	margin: 2vh 0 5vh 0;
+}
+#config-messages div.group {
+	margin: 0 0 5vh 0;
+}
+
+
+.hidden {
+	display: none;
+}
+
+#alert {
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	width:50vw;
+	height:50vh;
+	margin-top: -30vh; /*set to a negative number 1/2 of your height*/
+	margin-left: -37vw; /*set to a negative number 1/2 of your width*/
+	padding: 10vh 20vh 8vh 20vh;
+	opacity: var(--body-opacity, 1);
+}
+
+#container {
+	background-color: var(--bg-color, rgba(0,0,0,0));
+	padding: 10px;
+	border-radius: var(--border-radius, 0);
+}
+
+#title {
+	text-align: center;
+	font-size: var(--title-font-size,1em);
+	color: var(--title-color, rgba(230,126,34,1));
+	text-transform: uppercase;
+	margin-bottom: 1em;
+	white-space: wrap;
+	-webkit-text-fill-color: var(--title-color, rgba(230,126,34,1));
+	-webkit-text-stroke-width: var(--title-stroke-width, 1px);
+	-webkit-text-stroke-color: var(--title-stroke-color, "#000");
+	-webkit-text-size-adjust: var(--title-stroke-width, 1px);
+}
+#prompt {
+	text-align: center;
+	font-size: var(--prompt-font-size,1em);
+	color: var(--prompt-color, rgba(230,126,34,1));
+	text-transform: uppercase;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: var(--prompt-display, "block");
+	-webkit-text-fill-color: var(--prompt-color, rgba(230,126,34,1));
+	-webkit-text-stroke-width: var(--prompt-stroke-width, 1px);
+	-webkit-text-stroke-color: var(--prompt-stroke-color, "#000");
+	-webkit-text-size-adjust: var(--prompt-stroke-width, 1px);
+}
+#message {
+	text-align: center;
+	font-size: var(--message-font-size,1em);
+	color: var(--message-color, rgba(230,126,34,1));
+	text-transform: uppercase;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: var(--message-display, "block");
+	-webkit-text-fill-color: var(--message-color, rgba(230,126,34,1));
+	-webkit-text-stroke-width: var(--message-stroke-width, 1px);
+	-webkit-text-stroke-color: var(--message-stroke-color, "#000");
+	-webkit-text-size-adjust: var(--message-stroke-width, 1px);
+}
+.name {
+	text-align: center;
+	font-size: var(--name-font-size,1em);
+	border-radius: inherit;
+	color: var(--name-color, rgba(255, 0, 0, 1));
+	text-transform: uppercase;
+	white-space: wrap;
+	-webkit-text-fill-color: var(--name-color, rgba(230,126,34,1));
+	-webkit-text-stroke-width: var(--name-stroke-width, 1px);
+	-webkit-text-stroke-color: var(--name-stroke-color, "#000");
+	-webkit-text-size-adjust: 2em;
+}
+
+img.shadow {
+	box-shadow: 0px 3px 8px #222, inset 0px 2px 3px #555;
+}
+div.shadow {
+	text-shadow: 0px 3px 5px #222;
+}
+
+#logo {
+	text-align: center;
+	margin-bottom: 5px;
+	border-radius: inherit;
+}
+#logo img {
+	width:200px;
+	height: auto;
+}
+
+#logo img.rounded {
+	border-radius: 10%;
+}
+
+#logo img.circle {
+	border-radius: 50%;
+}
+
+#logo img.square {
+	border-radius: 0%;
+}
+
+#alert.none {
+	animation-name: no-animation;
+}
+
+@keyframes no-animation {
+	0% {
+
+	}
+	100% {
+
+	}
+}
