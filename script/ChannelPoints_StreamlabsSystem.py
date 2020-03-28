@@ -36,7 +36,7 @@ Version = "1.0.0-snapshot"
 Repo = "camalot/chatbot-channelpointsoverlay"
 
 DonateLink = "https://paypal.me/camalotdesigns"
-ReadMeFile = "https://github.com/" + Repo + "/blob/develop/ReadMe.md"
+ReadMeFile = "https://github.com/" + Repo + "/blob/develop/README.md"
 
 SettingsFile = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), "settings.json")
