@@ -16,7 +16,7 @@ Adds an overlay alert for when someone redeems channel point rewards
 - Download the latest zip file from [Releases](https://github.com/camalot/chatbot-channelpointsoverlay/releases/latest)
 - Right-click on the downloaded zip file and choose `Properties`
 - Click on `Unblock`  
-[![](https://i.imgur.com/vehSSn7l.png)](https://i.imgur.com/vehSSn7.png)  
+[![](https://i.imgur.com/YoUi7UCl.png)](https://i.imgur.com/YoUi7UC.png)  
   > **NOTE:** If you do not see `Unblock`, the file is already unblocked.
 - In Chatbot, Click on the import icon on the scripts tab.  
   ![](https://i.imgur.com/16JjCvR.png)
