@@ -7,13 +7,13 @@
 		"tooltip": "The name of your channel points.",
 		"group": "DEFAULT"
 	},
-	"IgnoreFulfillment": {
-		"type": "checkbox",
-		"value": true,
-		"label": "Ignore Fulfillment",
-		"tooltip": "Only show if unfulfilled",
-		"group": "DEFAULT"
-	},
+	// "IgnoreFulfillment": {
+	// 	"type": "checkbox",
+	// 	"value": true,
+	// 	"label": "Ignore Fulfillment",
+	// 	"tooltip": "Only show if unfulfilled",
+	// 	"group": "DEFAULT"
+	// },
 	"MinimumCost": {
 		"type": "slider",
 		"label": "Minimum Reward Cost",
@@ -213,7 +213,7 @@
 	},
 	"UseRewardBackgroundColor": {
 		"type": "checkbox",
-		"value": true,
+		"value": false,
 		"label": "Use Reward Background Color",
 		"tooltip": "Use the background color sent by the reward",
 		"group": "STYLE"

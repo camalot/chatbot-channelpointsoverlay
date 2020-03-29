@@ -66,19 +66,19 @@ class Settings(object):
             self.Duration = 5
             self.ImageShape = "circle"
             self.Opacity = 100
-            self.TitleColor = "rgba(240,240,240,1)"
+            self.TitleColor = "rgba(255,255,255,1)"
             self.TitleStrokeColor = "rgba(0,0,0,0)"
-            self.TitleStrokeWidth = 1
-            self.NameColor = "rgba(240,240,240,1)"
+            self.TitleStrokeWidth = 0
+            self.NameColor = "rgba(255,255,255,1)"
             self.NameStrokeColor = "rgba(0,0,0,0)"
-            self.NameStrokeWidth = 1
-            self.PromptColor = "rgba(240,240,240,1)"
+            self.NameStrokeWidth = 0
+            self.PromptColor = "rgba(255,255,255,1)"
             self.PromptStrokeColor = "rgba(0,0,0,0)"
-            self.PromptStrokeWidth = 1
+            self.PromptStrokeWidth = 0
             self.ShowPrompt = True
-            self.MessageColor = "rgba(240,240,240,1)"
+            self.MessageColor = "rgba(255,255,255,1)"
             self.MessageStrokeColor = "rgba(0,0,0,0)"
-            self.MessageStrokeWidth = 1
+            self.MessageStrokeWidth = 0
             self.ShowMessage = True
             self.PromptFontSize = 1
             self.TitleFontSize = 1
@@ -126,8 +126,10 @@ def Init():
     return
 
 def onRewardRedeemed (sender, args):
-    if (ScriptSettings.IgnoreFulfillment and args.Status.upper() == "FULFILLED") or not args.Image:
+    #  (ScriptSettings.IgnoreFulfillment and args.Status.upper() == "FULFILLED") or
+    if not args.Image:
         return
+
     itemCost = int(str(args.RewardCost))
     if itemCost <= ScriptSettings.MinimumCost:
         return
