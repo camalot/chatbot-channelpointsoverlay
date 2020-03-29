@@ -15,6 +15,7 @@ import time
 import threading
 import shutil
 import tempfile
+import urllib
 from HTMLParser import HTMLParser
 import argparse
 
@@ -205,6 +206,8 @@ def str2bool(v):
         return False
     return stripQuotes(v).strip().lower() in ("yes", "true", "1", "t", "y")
 
+def urlEncode(v):
+    return urllib.quote(v)
 
 def stripQuotes(v):
     r = re.compile(r"^[\"\'](.*)[\"\']$", re.U)
@@ -304,6 +307,7 @@ def SendTestAlert():
     })
 
 def OpenOverlayInBrowser():
+    # ?layer-name=" + urlEncode(ScriptName) + "&layer-width=1920&layer-height=1080
     os.startfile(os.path.realpath(os.path.join(
         os.path.dirname(__file__), "overlay.html")))
     return
