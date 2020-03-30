@@ -1,6 +1,6 @@
 var DEFAULT_SETTINGS = {
 	"PointsName": "Points",
-	"OAuthToken": "",
+	"TwitchOAuthToken": "",
 	"PlaySound": false,
 	"InSound": null,
 	"OutSound": null,

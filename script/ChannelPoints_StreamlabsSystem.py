@@ -54,7 +54,7 @@ class Settings(object):
         """ Load in saved settings file if available else set default values. """
         try:
             self.PointsName = "Points"
-            self.UserOAuth = ""
+            self.TwitchOAuthToken = ""
             self.IgnoreFulfillment = True
             self.PlaySound = False
             self.InSound = ""
@@ -118,7 +118,7 @@ def Init():
     # Load saved settings and validate values
     ScriptSettings = Settings(SettingsFile)
     SendSettingsUpdate()
-    Listener = ChannelPointMonitor.ChannelPointListener(ScriptSettings.UserOAuth, str(ChannelId))
+    Listener = ChannelPointMonitor.ChannelPointListener(ScriptSettings.TwitchOAuthToken, str(ChannelId))
     if Listener:
         Listener.OnRewardRedeemed += onRewardRedeemed
         Listener.Connect()
