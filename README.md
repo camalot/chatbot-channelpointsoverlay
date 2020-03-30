@@ -68,11 +68,13 @@ Click on the script in the list to bring up the configuration.
 
 ### STYLE
 
-[![](https://i.imgur.com/5a7Gue0l.png)](https://i.imgur.com/5a7Gue0.png)  
+[![](https://i.imgur.com/1a6tPP0l.png)](https://i.imgur.com/1a6tPP0.png)  
 
 | ITEM | DESCRIPTION | DEFAULT | 
 | ---- | ----------- | ------- | 
-| `Border Radius` | The percentage of curve to add to the corners. | `0` |  
+| `Alert Border Radius` | The percentage of curve to add to the corners. | `0` |  
+| `Alert Border Width (px)` | The width of the border to put around the alert box. | `0` |  
+| `Alert Border Color` | The border color around the alert box. | `TRANSPARENT` |  
 | `Opacity` | 0 = Fully Transparent. 100 = Fully Opaque. | `100` |
 | `Use Reward Background Color` | If true, it will use the colors of the reward; otherwise, it will use the `Alert Background Color` | `false` |
 | `Alert Background Color` | The color of the alert background | `TRANSPARENT` |
