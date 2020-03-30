@@ -193,12 +193,29 @@
 	},
 	"BorderRadius": {
 		"type": "slider",
-		"label": "Border Radius",
+		"label": "Alert Border Radius (%)",
 		"value": 0,
 		"min": 0,
 		"max": 100,
 		"ticks": 1,
 		"tooltip": "The border radius of the alert box",
+		"group": "STYLE"
+	},
+	"BorderWidth": {
+		"type": "slider",
+		"label": "Alert Border Width (px)",
+		"value": 0,
+		"min": 0,
+		"max": 100,
+		"ticks": 1,
+		"tooltip": "The border width of the alert box",
+		"group": "STYLE"
+	},
+	"BorderColor": {
+		"type": "colorpicker",
+		"label": "Alert Border Color",
+		"value": "rgba(0,0,0,0)",
+		"tooltip": "The alert box border color.",
 		"group": "STYLE"
 	},
 	"Opacity": {

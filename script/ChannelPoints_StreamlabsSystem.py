@@ -84,7 +84,9 @@ class Settings(object):
             self.TitleFontSize = 1
             self.NameFontSize = 1
             self.MessageFontSize = 1
-            self.BorderRadius = 10
+            self.BorderRadius = 0
+            self.BorderWidth = 0
+            self.BorderColor = "rgba(0,0,0,0)"
             self.MinimumCost = 0
             self.UseRewardBackgroundColor = True
             self.AlertBackgroundColor = "rgba(0,0,0,0)"

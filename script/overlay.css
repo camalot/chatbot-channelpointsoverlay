@@ -3,6 +3,8 @@
 	--font-name: 'days-one';
 	
 	--border-radius: 0;
+	--border-color: rgba(0,0,0,0);
+	--border-width: 0;
 	--body-opacity: 1;
 	
 	--title-color: rgba(230,126,34,1);
@@ -90,6 +92,8 @@ body, html {
 	background-color: var(--bg-color, rgba(0,0,0,0));
 	padding: 10px;
 	border-radius: var(--border-radius, 0);
+	border-width: var(--border-width, 0);
+	border-color: var(--border-color, rgba(0,0,0,0));
 }
 
 #title {

@@ -31,6 +31,8 @@ var DEFAULT_SETTINGS = {
 	"NameFontSize": 1,
 	"MessageFontSize": 1,
 	"BorderRadius": 0,
+	"BorderColor": "rgba(0,0,0,0)",
+	"BorderWidth": 0,
 	"MinimumCost": 0,
 	"AlertBackgroundColor": "rgba(0, 0, 0, 0)"
 };
