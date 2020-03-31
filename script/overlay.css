@@ -83,8 +83,9 @@ body, html {
 	width:50vw;
 	height:50vh;
 	margin-top: -30vh; /*set to a negative number 1/2 of your height*/
-	margin-left: -37vw; /*set to a negative number 1/2 of your width*/
-	padding: 10vh 20vh 8vh 20vh;
+	margin-left: -40vw; /*set to a negative number 1/2 of your width*/
+
+	padding: 10vh 20vh 10vh 20vh;
 	opacity: var(--body-opacity, 1);
 }
 
@@ -94,6 +95,7 @@ body, html {
 	border-radius: var(--border-radius, 0);
 	border-width: var(--border-width, 0);
 	border-color: var(--border-color, rgba(0,0,0,0));
+	border-style: solid;
 }
 
 #title {

@@ -137,7 +137,7 @@ def onRewardRedeemed (sender, args):
         return
 
     bgColor = ScriptSettings.AlertBackgroundColor or "rgba(0,0,0,0)"
-    if not ScriptSettings.UseRewardBackgroundColor:
+    if ScriptSettings.UseRewardBackgroundColor:
         bgColor = str(args.BackgroundColor)
     Parent.Log(ScriptName, str(args.DisplayName) + " just redeemed " + str(args.RewardTitle) + " for " + str(args.RewardCost) + " " + ScriptSettings.PointsName + ".")
     dataVal = {
@@ -298,6 +298,11 @@ def OpenDonateLink():
     return
 
 def SendTestAlert():
+
+    bgColor = ScriptSettings.AlertBackgroundColor or "rgba(0,0,0,0)"
+    if ScriptSettings.UseRewardBackgroundColor:
+        bgColor = "rgba(200,0,0,1)"
+
     SendRedemptionData({
         "displayName" : Parent.GetChannelName(),
         "pointsName" : ScriptSettings.PointsName,
@@ -307,7 +312,7 @@ def SendTestAlert():
         "cost" : 500,
         "status" : "UNFULFILLED",
         "image" : "https://static-cdn.jtvnw.net/custom-reward-images/58491861/5b6b1100-88e5-416b-934c-2e9ae2d75c70/b845e0af-0463-4da5-a336-6467b87a595c/custom-4.png",
-        "backgroundColor" : "rgba(0,0,0,0)"
+        "backgroundColor" : bgColor
     })
 
 def OpenOverlayInBrowser():

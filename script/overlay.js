@@ -98,7 +98,7 @@ function initializeUI() {
 		.css("--message-stroke-color", `${settings.MessageStrokeColor || "rgba(0,0,0,0)"}`)
 		.css("--border-radius", `${settings.BorderRadius || "0"}%`)
 		.css("--border-color", `${settings.BorderColor || "rgba(0,0,0,0)"}`)
-		.css("--border-width", `${settings.BorderWidth || "0"}`)
+		.css("--border-width", `${settings.BorderWidth || "0"}px`)
 		.css("--message-display", `${settings.ShowMessage ? "block" : "none"}`)
 		.css("--prompt-display", `${settings.ShowPrompt ? "block" : "none"}`)
 		;
