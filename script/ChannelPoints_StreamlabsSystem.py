@@ -138,8 +138,6 @@ def onRewardRedeemed (sender, args):
     if ScriptSettings.UseRewardBackgroundColor:
         bgColor = str(args.BackgroundColor)
     
-    isCommandReward = str(args.DisplayName).startswith("*")
-
     rewardPayload = self.GetPayloadFromReward(args)
     
     Parent.Log(ScriptName, str(args.DisplayName) + " just redeemed " + str(args.RewardTitle) + " for " + str(args.RewardCost) + " " + ScriptSettings.PointsName + ".")
@@ -154,11 +152,7 @@ def onRewardRedeemed (sender, args):
         "image" : str(args.Image or ""),
         "backgroundColor" : bgColor
     }
-    if not isCommandReward:
-        SendRedemptionData(dataVal)
-    else:
-        rewardCommandName = str(args.DisplayName)[1:]
-        TriggerRewardCommand(rewardCommandName, rewardPayload)
+    SendRedemptionData(dataVal)
     return
 
 def Unload():
