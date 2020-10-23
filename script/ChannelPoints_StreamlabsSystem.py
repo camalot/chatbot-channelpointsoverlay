@@ -100,35 +100,48 @@ def Init():
     Listener = ChannelPointMonitor.ChannelPointListener(ScriptSettings.TwitchOAuthToken, str(ChannelId))
     if Listener:
         Listener.OnRewardRedeemed += onRewardRedeemed
+        Listener.OnLog += onLog
         Listener.Connect()
     else:
         Parent.Log(ScriptName, "Listener is NONE")
     Initialized = True
     return
 
-def onRewardRedeemed (sender, args):
-    #  (ScriptSettings.IgnoreFulfillment and args.Status.upper() == "FULFILLED") or
-    if not args.Image:
-        return
+def onLog(sender, args):
+    Parent.Log(ScriptName, str(args.Data))
 
+def onRewardRedeemed (sender, args):
+    Parent.Log(ScriptName, "onRewardRedeemed")
+    #  (ScriptSettings.IgnoreFulfillment and args.Status.upper() == "FULFILLED") or
+    if not str(args.Image):
+        Parent.Log(ScriptName, "Skipped because no image defined")
+        return
+    Parent.Log(ScriptName, "After Image Check")
     itemCost = int(str(args.RewardCost))
     if itemCost <= ScriptSettings.MinimumCost:
+        Parent.Log(ScriptName, "Skipped because Cost is Below Minimum Cost Setting: {0}/{1}".format(itemCost, str(args.RewardCost)))
         # cost is not high enough
         return
+    Parent.Log(ScriptName, "After Item Cost Check")
     title = str(args.RewardTitle)
     if ScriptSettings.IgnorePattern and re.match(ScriptSettings.IgnorePattern, title):
+        Parent.Log(ScriptName, "Skipped because of ignore pattern")
         # matches the ignore pattern
         return
+    Parent.Log(ScriptName, "After Ignore Pattern Check")
     if ScriptSettings.MatchPattern and not re.match(ScriptSettings.MatchPattern, title): 
+        Parent.Log(ScriptName, "Skipped because of Must Match Pattern")
         # does not match "must match" pattern
         return
-
+    Parent.Log(ScriptName, "After Must Match Pattern Check")
     bgColor = ScriptSettings.AlertBackgroundColor or "rgba(0,0,0,0)"
+    Parent.Log(ScriptName, "Set Default BG Color: {0}".format(bgColor))
     if ScriptSettings.UseRewardBackgroundColor:
         bgColor = str(args.BackgroundColor)
-    
-    rewardPayload = self.GetPayloadFromReward(args)
-    
+        Parent.Log(ScriptName, "Use Reward Background Color: {0}".format(bgColor))
+    else:
+        Parent.Log(ScriptName, "Not Using Reward Background Color")
+
     Parent.Log(ScriptName, str(args.DisplayName) + " just redeemed " + title + " for " + str(args.RewardCost) + " " + ScriptSettings.PointsName + ".")
     dataVal = {
         "displayName" : str(args.DisplayName),
@@ -235,10 +248,13 @@ def Merge(source, destination):
 
 def GetPayloadFromReward(reward):
     try:
-        body = str(reward.RewardPrompt or "")
+        Parent.Log(ScriptName, "Build Payload")
+        body = str(reward.RewardPrompt) or ""
         payload = json.loads(body)
+        Parent.Log(ScriptName, json.dumps(payload))
         return payload
     except Exception as e:
+        Parent.Log(ScriptName, str(e))
         return None
 
 def TriggerRewardCommand(name, payload):
