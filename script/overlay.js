@@ -9,6 +9,7 @@ function showRedemption(data) {
 	if (!data || !data.displayName || !data.title || !data.image) {
 		return;
 	}
+	console.log(`Duration: ${settings.Duration}`);
 	$(":root").css("--bg-color", data.backgroundColor);
 	$("#alert")
 		.queue(function () {
@@ -42,7 +43,7 @@ function showRedemption(data) {
 				})
 				.dequeue();
 		})
-		.delay((settings.DisplaySeconds || 10) * 1000)
+		.delay((settings.Duration || 10) * 1000)
 		.queue(function () {
 			console.log("start out attention");
 			// if (settings.OutSound && settings.PlaySound) {

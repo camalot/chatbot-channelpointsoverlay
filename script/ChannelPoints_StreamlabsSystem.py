@@ -37,6 +37,7 @@ Version = "1.0.0-snapshot"
 Repo = "camalot/chatbot-channelpointsoverlay"
 ReadMeFile = "https://github.com/" + Repo + "/blob/develop/README.md"
 
+UIConfigFile = os.path.join(os.path.dirname(__file__), "UI_Config.json")
 SettingsFile = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), "settings.json")
 
@@ -50,56 +51,36 @@ class Settings(object):
 
     def __init__(self, settingsfile=None):
         """ Load in saved settings file if available else set default values. """
+        defaults = self.DefaultSettings(UIConfigFile)
         try:
-            self.PointsName = "Points"
-            self.TwitchOAuthToken = ""
-            self.IgnoreFulfillment = True
-            self.PlaySound = False
-            self.InSound = ""
-            self.OutSound = ""
-            self.InTransition = "slideInRight"
-            self.InAttentionAnimation = "pulse"
-            self.OutTransition = "slideOutRight"
-            self.OutAttentionAnimation = "pulse"
-            self.Duration = 5
-            self.ImageShape = "circle"
-            self.Opacity = 100
-            self.TitleColor = "rgba(255,255,255,1)"
-            self.TitleStrokeColor = "rgba(0,0,0,0)"
-            self.TitleStrokeWidth = 0
-            self.NameColor = "rgba(255,255,255,1)"
-            self.NameStrokeColor = "rgba(0,0,0,0)"
-            self.NameStrokeWidth = 0
-            self.PromptColor = "rgba(255,255,255,1)"
-            self.PromptStrokeColor = "rgba(0,0,0,0)"
-            self.PromptStrokeWidth = 0
-            self.ShowPrompt = True
-            self.MessageColor = "rgba(255,255,255,1)"
-            self.MessageStrokeColor = "rgba(0,0,0,0)"
-            self.MessageStrokeWidth = 0
-            self.ShowMessage = True
-            self.PromptFontSize = 1
-            self.TitleFontSize = 1
-            self.NameFontSize = 1
-            self.MessageFontSize = 1
-            self.BorderRadius = 0
-            self.BorderWidth = 0
-            self.BorderColor = "rgba(0,0,0,0)"
-            self.MinimumCost = 0
-            self.UseRewardBackgroundColor = True
-            self.AlertBackgroundColor = "rgba(0,0,0,0)"
             with codecs.open(settingsfile, encoding="utf-8-sig", mode="r") as f:
-                fileSettings = json.load(f, encoding="utf-8")
-                self.__dict__.update(fileSettings)
+                settings = json.load(f, encoding="utf-8")
+            # Parent.Log(ScriptName, json.dumps(settings))
+            # Parent.Log(ScriptName, json.dumps(defaults))
+            self.__dict__ = Merge(defaults, settings)
+            # Parent.Log(ScriptName, json.dumps(self.__dict__))
+        except Exception as ex:
+            Parent.Log(ScriptName, str(ex))
+            self.__dict__ = defaults
 
-        except Exception as e:
-            Parent.Log(ScriptName, str(e))
-
+    def DefaultSettings(self, settingsfile=None):
+        defaults = dict()
+        with codecs.open(settingsfile, encoding="utf-8-sig", mode="r") as f:
+            ui = json.load(f, encoding="utf-8")
+        for key in ui:
+            if 'value' in ui[key]:
+                try:
+                    defaults[key] = ui[key]['value']
+                except:
+                    if key != "output_file":
+                        Parent.Log(
+                            ScriptName, "DefaultSettings(): Could not find key {0} in settings".format(key))
+        return defaults
     def Reload(self, jsonData):
         """ Reload settings from the user interface by given json data. """
         Parent.Log(ScriptName, "Reload Settings")
-        fileLoadedSettings = json.loads(jsonData, encoding="utf-8")
-        self.__dict__.update(fileLoadedSettings)
+        self.__dict__ = Merge(self.DefaultSettings(UIConfigFile), json.loads(jsonData, encoding="utf-8"))
+
 
 
 def Init():
@@ -132,6 +113,14 @@ def onRewardRedeemed (sender, args):
 
     itemCost = int(str(args.RewardCost))
     if itemCost <= ScriptSettings.MinimumCost:
+        # cost is not high enough
+        return
+    title = str(args.RewardTitle)
+    if ScriptSettings.IgnorePattern and re.match(ScriptSettings.IgnorePattern, title):
+        # matches the ignore pattern
+        return
+    if ScriptSettings.MatchPattern and not re.match(ScriptSettings.MatchPattern, title): 
+        # does not match "must match" pattern
         return
 
     bgColor = ScriptSettings.AlertBackgroundColor or "rgba(0,0,0,0)"
@@ -140,12 +129,12 @@ def onRewardRedeemed (sender, args):
     
     rewardPayload = self.GetPayloadFromReward(args)
     
-    Parent.Log(ScriptName, str(args.DisplayName) + " just redeemed " + str(args.RewardTitle) + " for " + str(args.RewardCost) + " " + ScriptSettings.PointsName + ".")
+    Parent.Log(ScriptName, str(args.DisplayName) + " just redeemed " + title + " for " + str(args.RewardCost) + " " + ScriptSettings.PointsName + ".")
     dataVal = {
         "displayName" : str(args.DisplayName),
         "pointsName" : ScriptSettings.PointsName,
         "message" : str(args.Message or ""),
-        "title" : str(args.RewardTitle),
+        "title" : title,
         "prompt" : str(args.RewardPrompt or ""),
         "cost" : itemCost,
         "status" : str(args.Status),
@@ -220,6 +209,29 @@ def stripQuotes(v):
     if m:
         return m.group(1)
     return v
+
+
+def Merge(source, destination):
+    """
+    >>> a = { 'first' : { 'all_rows' : { 'pass' : 'dog', 'number' : '1' } } }
+    >>> b = { 'first' : { 'all_rows' : { 'fail' : 'cat', 'number' : '5' } } }
+    >>> merge(b, a) == { 'first' : { 'all_rows' : { 'pass' : 'dog', 'fail' : 'cat', 'number' : '5' } } }
+    True
+    """
+    for key, value in source.items():
+        if isinstance(value, dict):
+            # get node or create one
+            node = destination.setdefault(key, {})
+            Merge(value, node)
+        elif isinstance(value, list):
+            destination.setdefault(key, value)
+        else:
+            if key in destination:
+                pass
+            else:
+                destination.setdefault(key, value)
+
+    return destination
 
 def GetPayloadFromReward(reward):
     try:

@@ -7,13 +7,6 @@
 		"tooltip": "The name of your channel points.",
 		"group": "DEFAULT"
 	},
-	// "IgnoreFulfillment": {
-	// 	"type": "checkbox",
-	// 	"value": true,
-	// 	"label": "Ignore Fulfillment",
-	// 	"tooltip": "Only show if unfulfilled",
-	// 	"group": "DEFAULT"
-	// },
 	"MinimumCost": {
 		"type": "slider",
 		"label": "Minimum Reward Cost",
@@ -24,11 +17,25 @@
 		"tooltip": "The minimum cost of a reward to alert",
 		"group": "DEFAULT"
 	},
+	"IgnorePattern" : {
+		"type": "textbox",
+		"label": "Ignore Pattern",
+		"tooltip": "A regular expression to ignore redemptions",
+		"value": "",
+		"group": "DEFAULT"
+	},
+	"MatchPattern" : {
+		"type": "textbox",
+		"label": "Match Pattern",
+		"tooltip": "A regular expression that redemptions must match",
+		"value": "",
+		"group": "DEFAULT"
+	},
 	"Duration": {
 		"type": "slider",
 		"label": "Duration (seconds)",
 		"value": 5,
-		"min": 5,
+		"min": 1,
 		"max": 120,
 		"ticks": 1,
 		"tooltip": "The number of seconds to show the alert",
@@ -51,7 +58,7 @@
 		"group": "DEFAULT"
 	},
 
-	"TwitchOAuth": {
+	"TwitchOAuthToken": {
 		"type": "textbox",
 		"label": "Twitch OAuth",
 		"value": "",
@@ -70,6 +77,7 @@
 		"type": "dropdown",
 		"value": "slideInRight",
 		"items": [
+			"none",
 			"bounceIn",
 			"bounceInDown",
 			"bounceInLeft",

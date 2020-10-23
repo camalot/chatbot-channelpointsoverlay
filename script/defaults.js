@@ -34,5 +34,7 @@ var DEFAULT_SETTINGS = {
 	"BorderColor": "rgba(0,0,0,0)",
 	"BorderWidth": 0,
 	"MinimumCost": 0,
-	"AlertBackgroundColor": "rgba(0, 0, 0, 0)"
+	"AlertBackgroundColor": "rgba(0, 0, 0, 0)",
+	"IgnorePattern": "",
+	"MatchPattern": ""
 };
