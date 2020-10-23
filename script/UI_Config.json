@@ -1,5 +1,12 @@
 {
 	"output_file": "settings.json",
+	"DebugMode": {
+		"type": "checkbox",
+		"label": "Enable Debug Mode",
+		"value": true,
+		"tooltip": "If enabled, will log higher level of events.",
+		"group": "DEFAULT"
+	},
 	"PointsName": {
 		"type": "textbox",
 		"label": "Channel Points Name",
