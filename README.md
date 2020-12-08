@@ -48,14 +48,14 @@ Click on the script in the list to bring up the configuration.
 
 Sounds are played by finding sound files whose name match the name of the reward. [Read more](script/sounds/readme.md)
 
-[![](https://i.imgur.com/4qTwCHPl.png)](https://i.imgur.com/4qTwCHP.png)
+[![](https://i.imgur.com/JZzZwFul.png)](https://i.imgur.com/JZzZwFu.png)
 
 | ITEM | DESCRIPTION | DEFAULT | 
 | ---- | ----------- | ------- | 
 | `Enable Reward Alert Sounds` | Should sounds be on | `false` |  
 | `Volume` | The volume of the sound | `50` |
 | `Sound Files Path` | The path where to look for sound files | `sounds/` |
-| `Minimum Reward Cost` | NOT YET IMPLEMENTED | `N/A` |
+| `Use Default Sound?` | Use a default sound, if no specific sound file is found | `false` |  
 | `Default Sound File` | If no specific sound file is found for a reward, this is the one that is played. | `default-reward.mp3` |
 
 ### AUTHENTICATION

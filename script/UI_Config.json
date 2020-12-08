@@ -93,14 +93,11 @@
 		"group": "SOUNDS"
 	},
 
-	"SoundsMinimumCost": {
-		"type": "slider",
-		"label": "Minimum Reward Cost",
-		"value": 0,
-		"min": 0,
-		"max": 1000000,
-		"ticks": 10,
-		"tooltip": "The minimum cost of a reward to play sound",
+	"EnableDefaultSound": {
+		"type": "checkbox",
+		"label": "Use Default Sound?",
+		"value": false,
+		"tooltip": "If no specific sound is defined, use the default",
 		"group": "SOUNDS"
 	},
 

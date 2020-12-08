@@ -295,7 +295,7 @@ def LocateSoundFile(rewardId):
                 foundFile = True
                 soundFile = fullFile
 
-    if not foundFile:
+    if not foundFile and ScriptSettings.EnableDefaultSound:
         defaultFile = os.path.join(soundsPath, ScriptSettings.SoundDefault)
         if os.path.exists(defaultFile):
             if defaultFile.endswith(".txt"):
