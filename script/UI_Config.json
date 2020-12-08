@@ -87,7 +87,7 @@
 
 	"SoundsPath": {
 		"type": "textbox",
-		"label": "Enable Reward Alert Sounds",
+		"label": "Sound Files Path",
 		"value": "sounds/",
 		"tooltip": "The path to the sounds folder",
 		"group": "SOUNDS"
