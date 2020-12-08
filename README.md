@@ -44,7 +44,16 @@ Click on the script in the list to bring up the configuration.
 | `OPEN OVERLAY IN BROWSER` | Opens the url in your browser for testing | |  
 | `SEND TEST ALERT` | Sends a test event to the overlay | |
 
+### SOUNDS
+[![](https://i.imgur.com/4qTwCHPl.png)](https://i.imgur.com/4qTwCHP.png)
 
+| ITEM | DESCRIPTION | DEFAULT | 
+| ---- | ----------- | ------- | 
+| `Enable Reward Alert Sounds` | Should sounds be on | `false` |  
+| `Volume` | The volume of the sound | `50` |
+| `Sound Files Path` | The path where to look for sound files | `sounds/` |
+| `Minimum Reward Cost` | NOT YET IMPLEMENTED | `N/A` |
+| `Default Sound File` | If no specific sound file is found for a reward, this is the one that is played. | `default-reward.mp3` |
 
 ### AUTHENTICATION
 
