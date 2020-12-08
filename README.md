@@ -45,6 +45,9 @@ Click on the script in the list to bring up the configuration.
 | `SEND TEST ALERT` | Sends a test event to the overlay | |
 
 ### SOUNDS
+
+Sounds are played by finding sound files whose name match the name of the reward. [Read more](script/sounds/readme.md)
+
 [![](https://i.imgur.com/4qTwCHPl.png)](https://i.imgur.com/4qTwCHP.png)
 
 | ITEM | DESCRIPTION | DEFAULT | 
