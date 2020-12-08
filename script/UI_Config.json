@@ -65,6 +65,54 @@
 		"group": "DEFAULT"
 	},
 
+
+	"EnableSounds": {
+		"type": "checkbox",
+		"label": "Enable Reward Alert Sounds",
+		"value": false,
+		"tooltip": "The number of seconds to show the alert",
+		"group": "SOUNDS"
+	},
+
+	"SoundVolume": {
+		"type": "slider",
+		"label": "Volume",
+		"value": 50,
+		"min": 0,
+		"max": 100,
+		"ticks": 1,
+		"tooltip": "Volume of the sound",
+		"group": "SOUNDS"
+	},
+
+	"SoundsPath": {
+		"type": "textbox",
+		"label": "Enable Reward Alert Sounds",
+		"value": "sounds/",
+		"tooltip": "The path to the sounds folder",
+		"group": "SOUNDS"
+	},
+
+	"SoundsMinimumCost": {
+		"type": "slider",
+		"label": "Minimum Reward Cost",
+		"value": 0,
+		"min": 0,
+		"max": 1000000,
+		"ticks": 10,
+		"tooltip": "The minimum cost of a reward to play sound",
+		"group": "SOUNDS"
+	},
+
+	"SoundDefault": {
+		"type": "textbox",
+		"label": "Default Sound File",
+		"value": "default-reward.mp3",
+		"tooltip": "The default sound file to use if a specific does not exist for the reward.",
+		"group": "SOUNDS"
+	},
+
+
 	"TwitchOAuthToken": {
 		"type": "textbox",
 		"label": "Twitch OAuth",

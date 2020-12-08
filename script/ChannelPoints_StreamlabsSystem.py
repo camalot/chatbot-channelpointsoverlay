@@ -201,6 +201,13 @@ def onRewardRedeemed (sender, args):
         "image" : str(args.Image or ""),
         "backgroundColor" : bgColor
     }
+
+    # https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/blob/master/SoundPlayer/SoundPlayer_StreamlabsSystem.py
+    # Play sound file? 
+
+    if ScriptSettings.EnableSounds:
+        LocateSoundFile(title)
+    
     SendRedemptionData(dataVal)
     return
 
@@ -255,6 +262,65 @@ def SendSettingsUpdate():
 
 def SendRedemptionData(payload):
     SendWebsocketData("EVENT_CHANNELPOINTS_REDEEMED", payload)
+
+def LocateSoundFile(rewardId):
+    if not ScriptSettings.EnableSounds:
+        Logger.debug("no sound: not enabled")
+        return
+    if os.path.isabs(ScriptSettings.SoundsPath):
+        soundsPath = ScriptSettings.SoundsPath
+    else:
+        soundsPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ScriptSettings.SoundsPath))
+
+    if not os.path.exists(soundsPath):
+        Logger.debug("Sounds path '{0}' does not exist.".format(soundsPath))
+        return
+
+    safeName = safeFileName(rewardId)
+    Logger.debug("looking for {0}".format(safeName))
+    soundFile = None
+    foundFile = False
+
+    # Find the text file
+    textFile = os.path.join(soundsPath, "{0}.txt".format(safeName))
+    if os.path.exists(textFile):
+        randomLine = getRandomLineFromFile(textFile)
+        soundFile = os.path.join(soundsPath, randomLine)
+        foundFile = os.path.exists(soundFile)
+    else:
+        extensions = ["mp3", "wav", "ogg"]
+        for ext in extensions:
+            fullFile = os.path.join(soundsPath, "{0}.{1}".format(safeName, ext))
+            if os.path.exists(fullFile) and not foundFile:
+                foundFile = True
+                soundFile = fullFile
+
+    if not foundFile:
+        defaultFile = os.path.join(soundsPath, ScriptSettings.SoundDefault)
+        if os.path.exists(defaultFile):
+            if defaultFile.endswith(".txt"):
+                randomLine = getRandomLineFromFile(defaultFile)
+                soundFile = os.path.join(soundsPath, randomLine)
+                foundFile = os.path.exists(soundFile)
+            else:
+                foundFile = True
+                soundFile = defaultFile
+
+    if foundFile:
+        # should there be a cooldown for the sound play?
+        Logger.debug("playing {0}".format(soundFile))
+        Parent.PlaySound(soundFile, ScriptSettings.SoundVolume)
+
+def getRandomLineFromFile(filename):
+    r = random.Random(random.seed())
+    lines = list(open(filename))
+    r.shuffle(lines)
+    randomLine = r.choice(lines).rstrip()
+    return randomLine
+
+def safeFileName(filename):
+    keepcharacters = (' ','.','_')
+    return "".join(c for c in filename if c.isalnum() or c in keepcharacters).rstrip()
 
 def str2bool(v):
     if not v:
@@ -387,15 +453,15 @@ def OpenTwitchDonateLink():
     return
 
 def SendTestAlert():
-
+    Logger.debug("Send Test Alert")
     bgColor = ScriptSettings.AlertBackgroundColor or "rgba(0,0,0,0)"
     if ScriptSettings.UseRewardBackgroundColor:
         bgColor = "rgba(200,0,0,1)"
-
+    rewardTitle = "Test Channel Point Reward"
     SendRedemptionData({
         "displayName" : Parent.GetChannelName(),
         "pointsName" : ScriptSettings.PointsName,
-        "message" : "Test Channel Point Redemption",
+        "message" : rewardTitle,
         "title" : "Test Channel Point Reward",
         "prompt" : "Test Prompt Message",
         "cost" : 500,
@@ -403,6 +469,8 @@ def SendTestAlert():
         "image" : "https://static-cdn.jtvnw.net/custom-reward-images/58491861/5b6b1100-88e5-416b-934c-2e9ae2d75c70/b845e0af-0463-4da5-a336-6467b87a595c/custom-4.png",
         "backgroundColor" : bgColor
     })
+    Logger.debug("trigger soundfile")
+    LocateSoundFile(rewardTitle)
 
 def OpenOverlayInBrowser():
     # ?layer-name=" + urlEncode(ScriptName) + "&layer-width=1920&layer-height=1080
