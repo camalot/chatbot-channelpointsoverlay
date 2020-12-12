@@ -3,7 +3,7 @@
 	"DebugMode": {
 		"type": "checkbox",
 		"label": "Enable Debug Mode",
-		"value": true,
+		"value": false,
 		"tooltip": "If enabled, will log higher level of events.",
 		"group": "DEFAULT"
 	},
