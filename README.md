@@ -1,4 +1,5 @@
 # CHATBOT TWITCH CHANNEL POINTS OVERLAY
+[![CHATBOT TWITCH CHANNEL POINTS OVERLAY](https://github.com/camalot/chatbot-channelpointsoverlay/actions/workflows/build.yml/badge.svg)](https://github.com/camalot/chatbot-channelpointsoverlay/actions/workflows/build.yml)
 
 Adds an overlay alert for when someone redeems channel point rewards
 
